@@ -25,23 +25,11 @@ services:
       - 3000:3000
     depends_on:
       - mongo
+    env_file:
+      - .env.example
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-    restart: unless-stopped
-    networks:
-      - nesjs-network
-
-  prod:
-    container_name: ping_pong_prod
-    image: ping_pong_prod
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - 3000:3000
-    depends_on:
-      - mongo
     restart: unless-stopped
     networks:
       - nesjs-network
