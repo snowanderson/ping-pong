@@ -9,9 +9,6 @@
 ```bash
 # development
 docker compose up dev
-
-# production mode
-docker compose up prod
 ```
 
 Once started, the graphQL and its documentation are available at http://localhost:3000/graphql
