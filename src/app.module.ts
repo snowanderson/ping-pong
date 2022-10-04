@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { FormsModule } from './forms/forms.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -12,9 +13,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       driver: ApolloDriver,
       autoSchemaFile: true,
     }),
-    // We should be using env variable here (and configService)
-    // but for this simple demo app let's save some time
-    MongooseModule.forRoot('mongodb://root:password@mongo/'),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_URL),
     FormsModule,
   ],
   controllers: [AppController],
