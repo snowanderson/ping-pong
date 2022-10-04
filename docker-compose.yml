@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.4'
 
 services:
 
@@ -10,3 +10,42 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
     ports:
       - '27017:27017'
+    networks:
+      - nesjs-network
+
+  dev:
+    container_name: ping_pong_dev
+    image: ping_pong_dev
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: dev
+    command: npm run start:dev
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    networks:
+      - nesjs-network
+
+  prod:
+    container_name: ping_pong_prod
+    image: ping_pong_prod
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    networks:
+      - nesjs-network
+
+networks:
+  nesjs-network:
+    driver: bridge
