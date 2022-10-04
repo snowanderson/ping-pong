@@ -14,7 +14,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
     }),
     // We should be using env variable here (and configService)
     // but for this simple demo app let's save some time
-    MongooseModule.forRoot('mongodb://root:password@localhost/'),
+    MongooseModule.forRoot('mongodb://root:password@mongo/'),
     FormsModule,
   ],
   controllers: [AppController],
