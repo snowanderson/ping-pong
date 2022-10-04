@@ -80,6 +80,11 @@ jobs:
       - name: Install npm dependencies
         uses: 'bahmutov/npm-install@v1'
 
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1.3.0
+        with:
+          envkey_MONGO_URL: ${{secrets.MONGO_URL}}
+
       - name: Run E2E tests
         run: npm run test:e2e
 

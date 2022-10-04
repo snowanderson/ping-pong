@@ -9,7 +9,7 @@ import {
   FormAnswersSchema,
 } from '../src/forms/schemas/form-answers.schema';
 
-const mongoUri = 'mongodb://root:password@localhost/';
+const mongoUri = process.env.MONGO_URL;
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;

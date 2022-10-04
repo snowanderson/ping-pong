@@ -7,6 +7,9 @@
 ## Running the app
 
 ```bash
+# Prepare env variables
+cp .env.example .env
+
 # development
 docker compose up dev
 
