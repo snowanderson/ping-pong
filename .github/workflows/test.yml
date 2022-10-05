@@ -81,7 +81,7 @@ jobs:
         uses: 'bahmutov/npm-install@v1'
 
       - name: Create .env file
-        uses: SpicyPizza/create-envfile@v1.3.0
+        uses: SpicyPizza/create-envfile@v1.3.1
         with:
           envkey_MONGO_URL: ${{secrets.MONGO_URL}}
 
