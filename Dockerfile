@@ -1,4 +1,4 @@
-FROM node:18-alpine as base
+FROM node:19-alpine as base
 
 WORKDIR /usr/src/app
 
@@ -17,7 +17,7 @@ ENV NODE_ENV production
 RUN npm run build
 RUN npm ci --only=production && npm cache clean --force
 
-FROM node:18-alpine as prod
+FROM node:19-alpine as prod
 
 WORKDIR /usr/src/app
 
